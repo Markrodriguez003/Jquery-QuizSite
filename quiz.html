@@ -15,26 +15,29 @@
 
 <body>
 
-    <div class="container bgContainer text-center bgQuiz">
+    <div class="container text-center bgQuiz"> <br>
         <h4 class="text-center text-white mainQuestionText"> Question <span class="questionCounter"> 1 </span></h4>
         <div class="scoreTimerCard mt-2">
             <p class="text-white d-inline ">Score: <span class="score">0</span></p>
-            <p class="text-white d-inline timerCard ">Timer: <span class="timerM">05 </span> : <span class="timerS "> 00</span> </p>
+            <p class="text-white d-inline timerCard ">Timer: <span class="timerM">05 </span> : <span
+                    class="timerS ">00</span> </p>
         </div>
         <div class="indexCard">
-            <p class="questionText">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae ab dolore at rerum ipsa debitis?
-                Rerum, eum accusantium? Quo sit culpa voluptates earum facilis aperiam accusamus, maxime quas adipisci
-                debitis corrupti magni eius. Dolore ea quisquam, iure illo, doloremque cupiditate soluta reprehenderit
-                nobis ipsam, inventore voluptas fugiat sint quis. Consequuntur!
-            </p>
+            <p class="questionText"></p>
 
-            <p class="questionChoices">
-                A. Lorem, ipsum. 
-                B. Lorem ipsum dolor sit amet consectetur, 
-                C. Lorem. 
-                D. Lorem ipsum dolor sit amet. 
+            <p class="scoreDisplay">
+                YOU FINISHED! WHEW! Hopefully you did well! <br>
+                Here is your score : <span class="finalScore"></span>
+                <img src="Assets/imgs/thumbsDown.png"  alt="scoreImg" id="scoreImg">
+                <p class="scoreMsg"></p>
             </p>
+            <p class="questionChoices"></p>
+
+            <form action="#" class="userScoreLogBox">
+                <input type="text" id="userInitials" placeholder="Enter your intials here !">
+                <button id="userInitialsBtn" class="btn  btn-danger text-white">Submit score</button> <br>
+                <small class="errorText">Please enter only 3 characters!</small>
+            </form>
         </div>
 
         <div class="choiceBtns">
@@ -42,20 +45,19 @@
             <button class="btn btn-lg bg-success text-white">B</button>
             <button class="btn btn-lg bg-success text-white">C</button>
             <button class="btn btn-lg bg-success text-white">D</button>
-        </div>
+        </div> <br>
 
-
-        <button class="btn btn-lg bg-primary mb-4 text-white homeBtn"> <a href="index.html" class="text-white"> HOME!
+        <button class="btn btn-lg bg-primary mb-4 text-white homeBtn"> <a href="index.html" class="text-white"> QUIT!
             </a></button>
     </div>
-<!-- 
+    <!-- 
     <footer>
         <p>footer</p>
     </footer> -->
 
     <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"
         integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

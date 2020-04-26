@@ -1,3 +1,5 @@
+
+/* ARRAY OF QUESTIONS */
 var questionsArr = [
     "Which of the choices below is used the jQuery shorthand selector?",
     "What is jQuery used for?",
@@ -11,8 +13,8 @@ var questionsArr = [
     "Which of the choices below is a valid jQuery selection of a html element? pt.4"
 ];
 
+/* ARRAY OF ANSWERS */
 var answerArr = [
-
     " A. !{\"\"} B. @{\"\"} C. ^[\"\"] D. $(\"\") ",
     " A. Javascript Behaviors B. Changing CSS C. Selecting Html Elements D. All of the above ",
     " A. $(\".myBtn\") B. ${\"#myId\" +_ (\".Id2\")} C. $(\"#myDiv\") D.$(\"#myDiv span\")",
@@ -20,17 +22,29 @@ var answerArr = [
     " A. C++ B. Python C. Javascript D. Java ",
     " A. head tag /bottom of body tag B. before head tag C. in a meta tag D. in the footer ",
     " A. $(\".myHeader#!\") B. $(\".myP span\") C. $(\"!btn1\") D. $(\"..DivA\") ",
-    " A. $(\"#one =! two\") B. $(\"header*!\") C. $(\"x.get()\") D.$(\"button\")   ",
+    " A. $(\"#one =! two\") B. $(\"header*!\") C. $(\"x.get()\") D. $(\"button\")   ",
     " A. $(\"#ul li:first\")   B. $(\"ul li:First\") C. $(\"div .myClass #myId + 87\") D. $(\"#!myBtn!#\") ",
     " A. $(\".myBtn()\")B. $(\"document\") C. $(\".myBtn #id div\")  D. $(\"console.log(x)\") "
-
-
 ]
+
+/* ARRAY OF CORRECT ANSWERS */
 var answersLtrs = ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];
 
 
+/* SCOREBOARD */
+
+var scoreBoard = {
+    TOP: 95,
+    MED: 80,
+    HOL: 70,
+    CAB: 60,
+    XLX: 50,
+    ABC: 0
+    
+}
 
 
+/* SETTING UP ELEMENT SEELCTORS */
 var instructionsText = $(".instructionsText");
 var introText = $(".introText");
 
@@ -50,33 +64,33 @@ var timeMins = $(".timerCard .timerM");
 var timeSecs = $(".timerCard .timerS");
 
 
+/*  GAME TIMER */
 function timerStart() {
 
     const secs = 60;
     var m = 5;
     var s = 59;
 
-
     var timerSet = setInterval(() => {
 
         if (s <= 59 && s > 9) {
-            timeSecs.get(0).innerText = s;
+            timeSecs.text(s);
             s--;
             if (m === 5) {
                 m--;
-                timeMins.get(0).innerText = "0" + m;
+                timeMins.text("0" + m);
             }
         } else if (s < 10 && s > 0) {
-            timeSecs.get(0).innerText = "0" + s;
+            timeSecs.text("0" + s);
             s--;
         } else if (s === 0 && m != 0) {
             m--;
             s = 59;
-            timeSecs.get(0).innerText = s;
-            timeMins.get(0).innerText = "0" + m;
+            timeSecs.text(s);
+            timeMins.text("0" + m);
         } else if (m < 0 || m === 0) {
-            timeSecs.get(0).innerText = "0" + s;
-            timeMins.get(0).innerText = "0" + m;
+            timeSecs.text("0" + s);
+            timeMins.text("0" + m);
             m = 0;
             s = 0;
             console.log("HEY IT GOT HERE!");
@@ -86,85 +100,144 @@ function timerStart() {
     }, 1000);
 }
 
+$(".questionText").text(questionsArr[0]);
+$(".questionChoices").text(answerArr[0]);
 
-
-/*  console.log($(".choiceBtns button").get(0).innerText); */ // GRABS LETTER FROM BUTTON
-
-
-/* var x = 0; */
-
+/*  USER SCORE */
 var userScore = 0;
-
-$(".questionText").get(0).innerText = questionsArr[0];
-$(".questionChoices").get(0).innerText = answerArr[0];
 
 function gameStart() {
     timerStart();
+
     var gameLoop = true;
     var questionI = 0;
-    /*  questions:   0    1    2    3    4    5    6    7    8    9
-    answers:        ["d", "b", "b", "a", "c", "a", "b", "d", "a", "c"]; */
+    /*  
+    Questions:        0    1    2    3    4    5    6    7    8    9
+    Answers:        ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];   */
 
     quizQuestionAmount = 10;
-    if (gameLoop === true) {
-        var questionI = 0;
-        $(".choiceBtns button").on("click", function (e) {
-            var userChoice = e.target.innerText;
-            var finalChoice = userChoice.toString().toLowerCase();
 
-
-            if (questionI !== 10) {
-
-                if (finalChoice === answersLtrs[questionI]) {
-                    console.log(answersLtrs[questionI]);
-                    console.log("RIGHT");
-                    userScore = + 10;
-                    $(".score").get(0).innerText = userScore;
-                    $(".questionCounter").get(0).innerText = questionI + 1;
-                    $(".questionText").get(0).innerText = questionsArr[questionI];
-                    $(".questionChoices").get(0).innerText = answerArr[questionI];
-                    questionI++;
-
-                } else if (finalChoice != answersLtrs[questionI]) {
-                    console.log("WRONG");
-                    console.log(answersLtrs[questionI]);
-                    userScore = - 10;
-                    $(".score").get(0).innerText = userScore;
-                    $(".questionCounter").get(0).innerText = questionI + 1;
-                    $(".questionText").get(0).innerText = questionsArr[questionI];
-
-                    $(".questionChoices").get(0).innerText = answerArr[questionI];
-                    questionI++;
-                } else {
-
-                    gameOver();
-                    gameLoop = false;
-                }
-
-
+    var questionI = 0; // INDEX FOR QUESTIONS + ANSWERS
+    $(".choiceBtns button").on("click", function (e) {
+        var userChoice = e.target.innerText.toString().toLowerCase();
+         
+        if (questionI < quizQuestionAmount) {
+           
+            if (userChoice === answersLtrs[questionI]) {
+                userScore = userScore + 10;
+                console.log("Question Index: " + questionI + " - Question: " + questionI);
+                console.log("Correct Answer: " + answersLtrs[questionI]);
+                console.log(" User's Choice: " + userChoice);
+                console.log("UserScore: " + userScore);
+                questionI++;
+                $(".score").text(userScore);
+                $(".questionCounter").text(questionI + 1);
+                $(".questionText").text(questionsArr[questionI]);
+                $(".questionChoices").text(answerArr[questionI]);
+            
+            } else if (userChoice != answersLtrs[questionI]) {
+                /* userScore = userScore - 10; */
+                console.log("Question Index: " + questionI + " - Question: " + questionI);
+                console.log("Wrong Answer: " + answersLtrs[questionI]);
+                console.log(" User's Choice: " + userChoice);
+                console.log("UserScore: " + userScore);
+                questionI++;
+                $(".score").text(userScore);
+                $(".questionCounter").text(questionI + 1);
+                $(".questionText").text(questionsArr[questionI]);
+                $(".questionChoices").text(answerArr[questionI]);
+                
+            } if (questionI === quizQuestionAmount) {
+                gameOver();
             }
-
-
-        })
-
-
-    }
-
-
-
-
-
-
-
-
-
+        }
+    })
 }
 
-gameStart();
+gameStart(); // STARTS GAME
 
-
+var userIntials = "";
+/* GAME OVER SCREEN */
 function gameOver() {
-    console.log("GAME OVER BUDDY!");
+    $(".scoreDisplay").css("display", "block");
+    $(".questionText").css("display", "none");
+    $(".questionChoices").css("display", "none");
+    $(".scoreTimerCard ").css("display", "none");
+    $(".mainQuestionText").text("GAME OVER!");
+    $(".userScoreLogBox").css("display", "block");
+    $(".mainQuestionText span").text("");
+
+
+    /* CREATING AUDIO ELEMENTS. (Thanks Captain Planet!) */
+    var badAudioEle = document.createElement("audio");
+    badAudioEle.setAttribute("src", "Assets/audio/badScore.mp3");
+
+    var mehAudioEle = document.createElement("audio");
+    mehAudioEle.setAttribute("src", "Assets/audio/mehScore.mp3")
+
+    var goodAudioEle = document.createElement("audio");
+    goodAudioEle.setAttribute("src", "Assets/audio/correctScore.mp3")
+
+
+    var userInitBtn = $("#userInitialsBtn");
+    
+    userInitBtn.on("click", function(){
+        var userInit = $("#userInitials").get(0).innerText;
+        console.log(userInit);
+        if(userInit.length < 3 || userInit.length > 3){
+            $(".errorText").css("color", "red");
+           console.log("Wrong # initials" + "Initials Length: " + userInit.length );
+        } else if (userInit.length === 3) {
+            console.log("Right # initials" + "Initials Length: " + userInit.length );
+            console.log("Logging: " + userInit);
+        }
+    })
+
+
+    if (userScore < 0 || userScore === 0) {
+        badAudioEle.play(); 
+        $(".scoreMsg").text("Humm.. not good.. not good at all.. You need to work on your jQuery skills!");
+        $(".scoreDisplay .finalScore").text(userScore);
+        $(".finalScore").css("color", "red");
+        $("#scoreImg").css("display", "block");
+        $("#scoreImg").attr("src", "Assets/imgs/thumbsDown.png");
+    } else if (userScore <= 50) {
+        badAudioEle.play();
+        $(".scoreMsg").text("Eh.. you're kinda..sort of.. halfway there..somewhat(?)... Not neccesary a top notch score.. Keep at it!");
+        $(".scoreDisplay .finalScore").text(userScore);
+        $("#scoreImg").css("display", "block");
+        $(".finalScore").css("color", "orange");
+        $("#scoreImg").attr("src", "Assets/imgs/thumbsDown.png");
+    } else if(userScore >= 50 && userScore < 75){
+        mehAudioEle.play();
+        $(".scoreMsg").text("Well You are above 50. So that's a good place to be.. I guess.. try to improve your jquery knowledge!");
+        $(".scoreDisplay .finalScore").text(userScore);
+        $("#scoreImg").css("display", "block");
+        $(".finalScore").css("color", "orange");
+        $("#scoreImg").attr("src", "Assets/imgs/thumbsEh.png");
+    }  else if(userScore > 75  && userScore < 85){
+        goodAudioEle.play();
+        $(".scoreMsg").text("A good passing score for sure.. but you can do better! Keep on rockin jQuery!");
+        $(".scoreDisplay .finalScore").text(userScore);
+        $("#scoreImg").css("display", "block");
+        $(".finalScore").css("color", "springgreen");
+        $("#scoreImg").attr("src", "Assets/imgs/thumbsEh.png");
+    } else if (userScore > 85 && userScore < 99) {
+        goodAudioEle.play();
+        $(".scoreMsg").text("Nice. Very Nice. Not perfect...but.. Nice!");
+        $(".scoreDisplay .finalScore").text(userScore);
+        $("#scoreImg").css("display", "block");
+        $(".finalScore").css("color", "mediumspringgreen");
+        $("#scoreImg").attr("src", "Assets/imgs/thumbsUp.png");
+    } else if (userScore === 100 ) {
+        goodAudioEle.play();
+        $(".scoreMsg").text("WOW! Good job! You are a pro! I gotta make these quizzes harder.");
+        $(".scoreDisplay .finalScore").text(userScore);
+        $(".finalScore").css("color", "green");
+        $("#scoreImg").css("display", "block");
+        $("#scoreImg").attr("src", "Assets/imgs/star.png");
+        
+    }
 }
 
 
