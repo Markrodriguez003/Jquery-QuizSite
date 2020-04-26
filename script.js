@@ -13,12 +13,20 @@ var questionsArr = [
 
 var answerArr = [
 
-    " A. !{\"\"} B. @{\"\"} C. ^[\"\"] D. $(\"\") "
+    " A. !{\"\"} B. @{\"\"} C. ^[\"\"] D. $(\"\") ",
+    " A. Javascript Behaviors B. Changing CSS C. Selecting Html Elements D. All of the above ",
+    " A. $(\".myBtn\") B. ${\"#myId\" +_ (\".Id2\")} C. $(\"#myDiv\") D.$(\"#myDiv span\")",
+    " A. Event Listeners B. .append() C. Changing Scope D. Create a pointer to object ",
+    " A. C++ B. Python C. Javascript D. Java ",
+    " A. head tag /bottom of body tag B. before head tag C. in a meta tag D. in the footer ",
+    " A. $(\".myHeader#!\") B. $(\".myP span\") C. $(\"!btn1\") D. $(\"..DivA\") ",
+    " A. $(\"#one =! two\") B. $(\"header*!\") C. $(\"x.get()\") D.$(\"button\")   ",
+    " A. $(\"#ul li:first\")   B. $(\"ul li:First\") C. $(\"div .myClass #myId + 87\") D. $(\"#!myBtn!#\") ",
+    " A. $(\".myBtn()\")B. $(\"document\") C. $(\".myBtn #id div\")  D. $(\"console.log(x)\") "
 
 
 ]
-var answersLtrs = ["d", "b", "b", "a", "c", "a", "b", "d", "a", "c"];
-var userScore = 0;
+var answersLtrs = ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];
 
 
 
@@ -41,7 +49,7 @@ $(".goBackBtn").on("click", function () {
 var timeMins = $(".timerCard .timerM");
 var timeSecs = $(".timerCard .timerS");
 
-/* 
+
 function timerStart() {
 
     const secs = 60;
@@ -78,18 +86,20 @@ function timerStart() {
     }, 1000);
 }
 
-timerStart(); */
+
 
 /*  console.log($(".choiceBtns button").get(0).innerText); */ // GRABS LETTER FROM BUTTON
 
 
 
+
+var userScore = 0;
+
 $(".questionText").get(0).innerText = questionsArr[0];
 $(".questionChoices").get(0).innerText = answerArr[0];
 
-
 function gameStart() {
-
+    timerStart();
     var gameLoop = true;
     var questionI = 0;
     /*  questions:   0    1    2    3    4    5    6    7    8    9
@@ -97,33 +107,43 @@ function gameStart() {
 
     quizQuestionAmount = 10;
     if (gameLoop === true) {
+        var questionI = 0;
         $(".choiceBtns button").on("click", function (e) {
+            var userChoice = e.target.innerText;
+            var finalChoice = userChoice.toString().toLowerCase();
 
-            for (var questionI = 0; questionI != quizQuestionAmount;) {
-                var userChoice = e.target.innerText;
-                var finalChoice = userChoice.toString().toLowerCase();
 
-                $(".questionText").get(0).innerText = questionsArr[questionI];
-                $(".questionChoices").get(0).innerText = answerArr[questionI];
-
+            if (questionI !== 10) {
 
                 if (finalChoice === answersLtrs[questionI]) {
                     console.log(answersLtrs[questionI]);
                     console.log("RIGHT");
                     userScore = + 10;
                     $(".score").get(0).innerText = userScore;
+                    $(".questionCounter").get(0).innerText = questionI + 1;
+                    $(".questionText").get(0).innerText = questionsArr[questionI];
+                    $(".questionChoices").get(0).innerText = answerArr[questionI];
                     questionI++;
 
-                } else {
+                } else if (finalChoice != answersLtrs[questionI]) {
                     console.log("WRONG");
                     console.log(answersLtrs[questionI]);
                     userScore = - 10;
                     $(".score").get(0).innerText = userScore;
+                    $(".questionCounter").get(0).innerText = questionI + 1;
+                    $(".questionText").get(0).innerText = questionsArr[questionI];
+
+                    $(".questionChoices").get(0).innerText = answerArr[questionI];
                     questionI++;
+                } else {
+
+                    gameOver();
+                    gameLoop = false;
                 }
-                
+
 
             }
+
 
         })
 
