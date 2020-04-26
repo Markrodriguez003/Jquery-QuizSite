@@ -40,9 +40,7 @@ var scoreBoard = {
     CAB: 60,
     XLX: 50,
     ABC: 0
-    
 }
-
 
 /* SETTING UP ELEMENT SEELCTORS */
 var instructionsText = $(".instructionsText");

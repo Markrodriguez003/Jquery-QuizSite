@@ -48,10 +48,12 @@ p {
 .underText {
     text-decoration: underline;
 }
-.greatThinker{
+
+.greatThinker {
     width: 485px;
     height: auto;
 }
+
 .bgQuiz {
     margin-top: 25px;
     background: #F03232;
@@ -66,7 +68,7 @@ p {
 
 .mainQuestionText {
     font-size: 45px;
-  /*   text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F; */
+    /*   text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F; */
     margin-top: 10px;
 }
 
@@ -84,7 +86,7 @@ p {
     border-bottom-left-radius: 65px;
 }
 
-#scoreImg{
+#scoreImg {
     display: none;
     width: 105px !important;
     height: auto;
@@ -93,17 +95,15 @@ p {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-   
 }
-
- 
 
 .choiceBtns {
     margin-bottom: 30px;
     margin-top: -10px;
 }
-.choiceBtns button{
-    margin: 10px; 
+
+.choiceBtns button {
+    margin: 10px;
 }
 
 .questionText {
@@ -113,54 +113,48 @@ p {
     font-size: 22px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.questionChoices{
+
+.questionChoices {
     font-size: 18px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.scoreTimerCard p{
+.scoreTimerCard p {
     margin: 80px;
 }
- .homeBtn{
-     margin-top: -25px;
- }
 
- .scoreDisplay{
-     display: none;
-     font-size: 35px;
- }
+.homeBtn {
+    margin-top: -25px;
+}
 
- .scoreMsg{
-     font-style: italic;
- }
- 
- .userScoreLogBox{
-     display:none;
-     
- }
- .errorText{
-     color:grey;
-     
- }
- 
- .userScoreLogBox button{
-     
-     margin: 15px;
-     
- }
+.scoreDisplay {
+    display: none;
+    font-size: 35px;
+}
 
+.scoreMsg {
+    font-style: italic;
+}
 
+.userScoreLogBox {
+    display: none;
+}
+
+.errorText {
+    color: grey;
+}
+
+.userScoreLogBox button {
+    margin: 15px;
+}
 
 @media (max-width: 1180px) {
     .mainText {
         font-size: 45px;
         text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F;
     }
-
-    .greatThinker{
+    .greatThinker {
         width: 355px;
         height: auto;
     }
-
-    
 }
