@@ -91,7 +91,7 @@ function timerStart() {
 /*  console.log($(".choiceBtns button").get(0).innerText); */ // GRABS LETTER FROM BUTTON
 
 
-
+/* var x = 0; */
 
 var userScore = 0;
 
