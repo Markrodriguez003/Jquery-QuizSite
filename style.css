@@ -148,6 +148,9 @@ p {
     margin: 15px;
 }
 
+.scoreTable{
+}
+
 @media (max-width: 1180px) {
     .mainText {
         font-size: 45px;
