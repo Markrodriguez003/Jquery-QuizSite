@@ -1,8 +1,6 @@
 # hw4
 Homework 4 - Pop Quiz
 
-
-
 /* ARRAY OF QUESTIONS */
 var questionsArr = [
     "Which of the choices below is used the jQuery shorthand selector?",
@@ -66,7 +64,6 @@ var timeSecs = $(".timerCard .timerS");
 /*  GAME TIMER */
 function timerStart(bool) {
 
-    
     if(bool === true){
         const secs = 60;
         var m = 5;

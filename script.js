@@ -37,7 +37,6 @@ var introText = $(".introText");
 $(".instructionsBtn").on("click", function () {
     instructionsText.show();
     introText.hide();
-
 })
 $(".goBackBtn").on("click", function () {
     instructionsText.hide();
@@ -83,9 +82,7 @@ function timerStart() {
     }
 }
 
-
 $(".startBtn").on("click",  gameStart());
-
 
 /* PRINTS FIRST SET OF QUESTIONS TO QUIZ SCREEN */
 $(".questionText").text(questionsArr[0]);
@@ -94,7 +91,7 @@ $(".questionChoices").text(answerArr[0]);
 /*  USER SCORE */
 var userScore = 0;
 var setIntTimer;
-
+const QUIZ_QUESTION_AMOUNT = 10; // # OF QUESTIONS
 /* GAME MAIN FUNCTION */
 function gameStart() {
     setIntTimer = setInterval(timerStart, 80);
@@ -103,13 +100,13 @@ function gameStart() {
     Questions:        0    1    2    3    4    5    6    7    8    9
     Answers:        ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];   */
 
-    quizQuestionAmount = 10; // # OF QUESTIONS
+ 
 
     var questionI = 0; // INDEX FOR QUESTIONS + ANSWERS
     $(".choiceBtns button").on("click", function (e) {
         var userChoice = e.target.innerText.toString().toLowerCase();
 
-        if (questionI < quizQuestionAmount) {
+        if (questionI < QUIZ_QUESTION_AMOUNT) {
 
             if (userChoice === answersLtrs[questionI]) {
                 userScore = userScore + 10;
@@ -124,7 +121,6 @@ function gameStart() {
                 $(".questionChoices").text(answerArr[questionI]);
 
             } else if (userChoice != answersLtrs[questionI]) {
-                /* userScore = userScore - 10; */
                 console.log("Question Index: " + questionI + " - Question: " + questionI);
                 console.log("Wrong Answer: " + answersLtrs[questionI]);
                 console.log(" User's Choice: " + userChoice);
@@ -135,7 +131,7 @@ function gameStart() {
                 $(".questionText").text(questionsArr[questionI]);
                 $(".questionChoices").text(answerArr[questionI]);
 
-            } if (questionI === quizQuestionAmount) {
+            } if (questionI === QUIZ_QUESTION_AMOUNT) {
                 clearInterval(setIntTimer);
                 gameOver();
             }
@@ -230,19 +226,61 @@ function gameOver() {
     }
 }
 
+/* SCOREBOARD VARIABLES */
+const SCORE_INDEX = 5;  //TOTAL SCORE INDEX #
 
-/* SCOREBOARD */
+/* SCOREBOARD OBJ*/
 var scoreBoard = {
-    TOP: 95,
-    MED: 80,
-    HOL: 70,
-    CAB: 60,
-    XLX: 50,
-    ABC: 0
+    "SCORE1": ["AAA", "90"],
+    "SCORE2" : ["BBB", "70"],
+    "SCORE3" : ["CCC", "60"],
+    "SCORE4" : ["DDD", "61"],
+    "SCORE5" : ["EEE", "62"]
 }
 
 /* SETTING TABLE */
+scoreboardArr = Object.keys(scoreBoard);   // Grabbing scoreboard object keys as an array to cycle thru                   
+ 
 
 
-var rowA = $("#row1").get(0).innerText;
-console.log(rowA);
+/* SETS SCORE TABLE  */
+for(var i=0; i<SCORE_INDEX; i++){
+   $(`#row${i} td:first`).text(scoreBoard[scoreboardArr[i]][0]);
+   $(`#row${i} td:last`).text(scoreBoard[scoreboardArr[i]][1]); 
+} 
+
+userScore = 71;
+ var highestIndex = 0;
+ var highestScore = 0;
+ var currentScore = 0;
+/* CHECKS USERSCORE AND SETS IT IN THE SCORE TABLE */
+for(var x = 0; x < SCORE_INDEX; x++){
+
+    if(userScore >  $(`#row${x} td:last`).text()){
+        console.log(`${userScore} is greater than rank ${x} Score: ${$(`#row${x} td:last`).text()} `);
+        currentScore = $(`#row${x} td:last`).text();
+        console.log(`HIGHESTFUCK ${highestScore}`);
+        if(currentScore > highestScore){
+            console.log(`Current score no: ${currentScore}`)
+            highestScore = currentScore;
+            highestIndex = x;
+            console.log(`New highest score no: ${highestScore}`)
+        } else {console.log("it's not higher. Previous highest stays the same")}
+        
+    } else {
+        console.log($(`#row${x} td:last`).text());
+        console.log(`${userScore} is NOT greater than rank ${x} Score`);
+    };
+console.log("Done with checkin");
+
+    
+}
+
+console.log(`THIS IS THE RANK ${highestIndex} WITH THE HIGHEST SCORE ${highestScore}`);
+$(`#row${highestIndex} td:first`).text(userIntials);
+$(`#row${highestIndex} td:last`).text(userScore); 
+    
+ 
+     
+ 
+ 
