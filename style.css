@@ -18,18 +18,18 @@
 }
 
 p {
-    font-size: 22px;
+    font-size: 18px;
     letter-spacing: 3px;
     word-spacing: 2px;
 }
 
 .mainText {
-    font-size: 95px;
+    font-size: 65px;
     text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F;
 }
 
 .bgIntro {
-    margin-top: 55px;
+    margin-top: 50px;
     background: #F03232;
     background: -moz-linear-gradient(top, #F03232 0%, #E83030 58%, #D92D2D 100%);
     background: -webkit-linear-gradient(top, #F03232 0%, #E83030 58%, #D92D2D 100%);
@@ -42,7 +42,7 @@ p {
 
 .instructionsText {
     display: none;
-    padding: 40px;
+    /* padding: 12px; */
 }
 
 .underText {
@@ -50,7 +50,7 @@ p {
 }
 
 .greatThinker {
-    width: 485px;
+    width: 285px;
     height: auto;
 }
 
@@ -151,6 +151,12 @@ p {
 .scoreTable{
 }
 
+.medals{
+    width: 18px;
+    height: auto;
+
+}
+
 @media (max-width: 1180px) {
     .mainText {
         font-size: 45px;
@@ -160,4 +166,12 @@ p {
         width: 355px;
         height: auto;
     }
+
+    .scoreTimerCard{
+        font-size: 12px;
+        margin: 40px;
+        
+
+    }
+    
 }

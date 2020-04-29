@@ -3,75 +3,80 @@
 <img src="Assets/imgs/mainBG3.png" id="bg" alt="">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta rel="author" content="Mark Anthony Patrick Rodriguez">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta rel="author" content="Mark Anthony Patrick Rodriguez">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>jQuery Pop Quiz!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>jQuery Pop Quiz!</title>
 </head>
 
 <body>
 
-    <!-- MAIN CONTAINER -->
-    <div class="container bgContainer text-center bgIntro p-4">
+  <!-- MAIN CONTAINER -->
+  <div class="container bgContainer text-center bgIntro p-4">
 
-        <div class="introText">
-            <!-- INTRO TEXT -->
-            <h4 class="text-center text-white mainText"> SCOREBOARD!</h4><br>
-            <p class="text-center text-white">TOP 5 SCORES:</p>
-            <table class="table table-sm table-striped table-bordered table-danger scoreTable">
-                <thead>
-                  <tr >
-                    <th scope="col" class="font-weight-bold">Rank #</th>
-                    <th scope="col" class="font-weight-bold">Player Intials</th>
-                    <th scope="col" class="font-weight-bold">Player Score</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr id="row0">
-                    <th scope="row">1</th>
-                    <td>bbb</td> <!-- #row1 td:first -->
-                    <td>90</td> <!-- #row1 td:last -->
-                  </tr>
-                  <tr id="row1">
-                    <th scope="row" id="row1mr">2</th>
-                    <td>CED</td>
-                    <td>70</td>
-                  </tr>
-                  <tr id="row2">
-                    <th scope="row" id="row2mr">3</th>
-                    <td>GHEn</td>
-                    <td>60</td>
-                  </tr>
-                  <tr id="row3">
-                    <th scope="row" id="row3mr">4</th>
-                    <td>BBB</td>
-                    <td>50</td>
-                  </tr>
-                  <tr id="row4">
-                    <th scope="row" id="row4mr">5</th>
-                    <td>!!!</td>
-                    <td>30</td>
-                  </tr>
-                  <tr>
-                </tbody>
-              </table>
-        </div>
-
-        <!-- GO BACK BUTTONS -->
-        <button class="btn btn-lg bg-primary text-white justify-content-center goBackBtn ">
-        <a href="index.html" class="text-white">GO BACK!</a>
-          
-        </button>
-
+    <div class="introText">
+      <!-- INTRO TEXT -->
+      <h4 class="text-center text-white mainText"> SCOREBOARD!</h4><br>
+      <p class="text-center text-white">TOP 5 SCORES:</p>
+      <table class="table table-sm table-striped table-bordered table-danger scoreTable">
+        <thead>
+          <tr>
+            <th scope="col" class="font-weight-bold">Rank #</th>
+            <th scope="col" class="font-weight-bold">Player Intials</th>
+            <th scope="col" class="font-weight-bold">Player Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="row0">
+            <th scope="row">1
+              <img src="Assets/imgs/no1Medal.png" alt="First place medal" class="medals"></th>
+            <td>bbb</td> <!-- #row1 td:first -->
+            <td>90</td> <!-- #row1 td:last -->
+          </tr>
+          <tr id="row1">
+            <th scope="row" id="row1">2
+              <img src="Assets/imgs/no2Medal.png" alt="First place medal" class="medals">
+            </th>
+            <td>CED</td>
+            <td>70</td>
+          </tr>
+          <tr id="row2"></tr>
+            <th scope="row" id="row2">3
+              <img src="Assets/imgs/no3Medal.png" alt="First place medal" class="medals">
+            </th>
+            <td>GHEn</td>
+            <td>60</td>
+          </tr>
+          <tr id="row3">
+            <th scope="row" id="row3">4</th>
+            <td>BBB</td>
+            <td>50</td>
+          </tr>
+          <tr id="row4">
+            <th scope="row" id="row4">5</th>
+            <td>!!!</td>
+            <td>30</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
     </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"
-        integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+
+    <!-- GO BACK BUTTONS -->
+    <button class="btn btn-lg bg-primary text-white justify-content-center goBackBtn ">
+      <a href="index.html" class="text-white">GO BACK!</a>
+
+    </button>
+
+  </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"
+    integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+  <script src="scoreBoard.js"></script>
 </body>
 
 </html>
