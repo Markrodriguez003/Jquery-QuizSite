@@ -1,3 +1,6 @@
+var cheer = document.createElement("audio");
+cheer.setAttribute("src", "Assets/audio/cheer.mp3");
+cheer.play();
 /* SCOREBOARD VARIABLES */
 const SCORE_INDEX = 5;  //TOTAL SCORE INDEX #
 
@@ -32,14 +35,16 @@ var userScore = localStorage.getItem(US);
 for (var x = 0; x < SCORE_INDEX; x++) {
 
     if (userScore > $(`#row${x} td:last`).text()) {
-        console.log(`${userScore} is greater than rank ${x} Score: ${$(`#row${x} td:last`).text()} `);
+        console.log(`${userScore} is greater than rank ${x} - It's score: ${$(`#row${x} td:last`).text()} `);
         currentScore = $(`#row${x} td:last`).text();
-        console.log(`HIGHESTscore ${highestScore}`);
+        console.log(`HIGHESTSCORE RIGHT NOW IS: ${highestScore}`);
         if (currentScore > highestScore) {
             console.log(`Current score no: ${currentScore}`)
             highestScore = currentScore;
             highestIndex = x;
             console.log(`New highest score no: ${highestScore}`)
+            $(`#row${highestIndex} td:first`).text(userIni);
+            $(`#row${highestIndex} td:last`).text(userScore);
         } else { console.log("it's not higher. Previous highest stays the same") }
 
     } else {
@@ -48,5 +53,4 @@ for (var x = 0; x < SCORE_INDEX; x++) {
     };
 }
 
-$(`#row${highestIndex} td:first`).text(userIni);
-$(`#row${highestIndex} td:last`).text(userScore); 
+

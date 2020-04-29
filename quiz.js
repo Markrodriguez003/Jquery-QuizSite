@@ -1,57 +1,103 @@
-/* ARRAY OF QUESTIONS */
-var questionsArr = [
-    "Which of the choices below is used the jQuery shorthand selector?",
-    "What is jQuery used for?",
-    "Which one of the choices below is not a jQuery method?",
-    "What is used to create and track behaviors on a website? (Mouse clicking, hovering over elements, ect)",
-    "What scripting language do you use to ulitize jQuery?",
-    "Where do you insert the link for jQuery in a html document?",
-    "Which of the choices below is a valid jQuery selection of a html element? pt.1",
-    "Which of the choices below is a valid jQuery selection of a html element? pt.2",
-    "Which of the choices below is a valid jQuery selection of a html element? pt.3",
-    "Which of the choices below is a valid jQuery selection of a html element? pt.4"
-];
+/* ARRAY OF QUESTIONS */ /* CHANGE TO OBJ - {"QUESTION", "CHOICES","ANSWER" } */
 
-/* ARRAY OF ANSWERS */
-var answerArr = [
-    " A. !{\"\"} B. @{\"\"} C. ^[\"\"] D. $(\"\") ",
-    " A. Javascript Behaviors B. Changing CSS C. Selecting Html Elements D. All of the above ",
-    " A. $(\".myBtn\") B. ${\"#myId\" +_ (\".Id2\")} C. $(\"#myDiv\") D.$(\"#myDiv span\")",
-    " A. Event Listeners B. .append() C. Changing Scope D. Create a pointer to object ",
-    " A. C++ B. Python C. Javascript D. Java ",
-    " A. head tag /bottom of body tag B. before head tag C. in a meta tag D. in the footer ",
-    " A. $(\".myHeader#!\") B. $(\".myP span\") C. $(\"!btn1\") D. $(\"..DivA\") ",
-    " A. $(\"#one =! two\") B. $(\"header*!\") C. $(\"x.get()\") D. $(\"button\")   ",
-    " A. $(\"#ul li:first\")   B. $(\"ul li:First\") C. $(\"div .myClass #myId + 87\") D. $(\"#!myBtn!#\") ",
-    " A. $(\".myBtn()\")B. $(\"document\") C. $(\".myBtn #id div\")  D. $(\"console.log(x)\") "
+var jQueryAnswerArr = [
+    {
+        question: "Which of the choices below is used as the jQuery shorthand selector?",
+        choices: ["!{\" \"}", "@{\" \"}", " ^[\" \"]", "$(\" \")"],
+        answer: "d"
+    },
+    {
+        question: "What is jQuery used for?",
+        choices: ["Scripting site behaviors", "Changing the css of an element", " Selecting HTML elements", "All of the above"],
+        answer: "d"
+    },
+    {
+        question: "Which scripting language is needed to use jQuery?",
+        choices: ["Python", "HTML", "Javascript", "Java"],
+        answer: "c"
+    },
+    {
+        question: "Where do you insert the script link for jQuery in a html document?",
+        choices: ["Head tag /Bottom of body tag", "Inside CSS file", "As a local storage object", "Meta tag"],
+        answer: "a"
+    },
+    {
+        question: "What is used to create and track behaviors on a website? (Mouse clicking, hovering over elements, ect)",
+        choices: ["Key tracker", "Event listeners", "Key input", "Local storage recall"],
+        answer: "b"
+    },
+    {
+        question: "Which one of the choices below is not a jQuery method?",
+        choices: ["$(\".myBtn\")", "${\"#myId\" +_ (\".Id2\")}", "$(\"#myDiv\")", "$(\"#myDiv span\")"],
+        answer: "b"
+    },
+    {
+        question: "Which of the choices below is a valid jQuery selection of a html element? Pt.1",
+        choices: ["$(\".myHeader#!\")", " $(\"!btn1\") ", "$(\".myP span\")", " $(\"..DivA\")"],
+        answer: "c"
+    },
+    {
+        question: "Which of the choices below is a valid jQuery selection of a html element? Pt.2",
+        choices: ["$(\"#one =! two\")", " $(\"header*\")", "$(\"x.get()\")", "$(\"button\")"],
+        answer: "d"
+    },
+    {
+        question: "Which of the choices below is a valid jQuery selection of a html element? Pt.3",
+        choices: ["$(\"#ul li:first\")", "$(\"ul li:First\")", "$(\"div .myClass #myId .append()\")", "$(\"#!myBtn!#\")"],
+        answer: "a"
+    },
+    {
+        question: "Which of the choices below is a valid jQuery selection of a html element? Pt.4",
+        choices: [" $(\".myBtn()\")", "$(\"document.assets\")", "$(\".myBtn #id div\")", "$(\"console.log(x)\")"],
+        answer: "c"
+    },
 ]
 
-/* ARRAY OF CORRECT ANSWERS */
-var answersLtrs = ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];
+/* CREATING TIMER AUDIO ELEMENTS. (Thanks Captain Planet!) */
+var tick = document.createElement("audio");
+tick.setAttribute("src", "Assets/audio/tick.mp3");
+var tock = document.createElement("audio");
+tock.setAttribute("src", "Assets/audio/tock.mp3");
+
 
 /* SELECTS TIME ELEMENT BY MINS/SECS */
 var timeMins = $(".timerCard .timerM");
 var timeSecs = $(".timerCard .timerS");
 
 /* TIMER VARS */
-var m = 5;
+var m = 2;
 var s = 59;
+var ticky = 0;
 
 /*  GAME TIMER */
 function timerStart() {
 
-    console.log("TIMER ON");
+    /* console.log("TIMER ON"); */
 
-    if (s <= 59 && s > 9) {
+    if (s <= 59 && s > 9) { // TIMER SPITS OUT MINS:SECS;
         timeSecs.text(s);
         s--;
-        if (m === 5) {
+        if (ticky === 0) { //Alternates "Tick-Tock Sounds"
+            tick.play();
+            ticky = 1;
+        } else {
+            tock.play();
+            ticky = 0;
+        }
+        if (m === 2) {
             m--;
             timeMins.text("0" + m);
         }
     } else if (s < 10 && s > 0) {
         timeSecs.text("0" + s);
         s--;
+        if (ticky === 0) { //Alternates "Tick-Tock Sounds"
+            tick.play();
+            ticky = 1;
+        } else {
+            tock.play();
+            ticky = 0;
+        }
     } else if (s === 0 && m != 0) {
         m--;
         s = 59;
@@ -69,74 +115,86 @@ function timerStart() {
 }
 
 /* PRINTS FIRST SET OF QUESTIONS TO QUIZ SCREEN */
-$(".questionText").text(questionsArr[0]);
-$(".questionChoices").text(answerArr[0]);
+
+
+/* $(".questionChoices").text(answerArr[0]);  */
+
+gameStart();  //STARTS GAME
 
 /*  USER SCORE */
-var userScore = 0;
-var setIntTimer;
+var userScore = 0; // USER SCORE
+var setIntTimer; // TIMER SETINTERVAL VAR
 const QUIZ_QUESTION_AMOUNT = 10; // # OF QUESTIONS
 
-
-gameStart();
 /* GAME START FUNCTION */
 function gameStart() {
+
+    var questionI = 0; // INDEX FOR QUESTIONS + ANSWERS /* THIS CAN BE FURTHER SIMPLIFIED WITH OBJ ^ */
     setIntTimer = setInterval(timerStart, 1000); // timerStart() doesn't work.
+    $(".questionText").text(jQueryAnswerArr[questionI].question);
+    $(".a").text(`A.  ${jQueryAnswerArr[0].choices[0]}`);
+    $(".b").text(`B.  ${jQueryAnswerArr[0].choices[1]}`);
+    $(".c").text(`C.  ${jQueryAnswerArr[0].choices[2]}`);
+    $(".d").text(`D.  ${jQueryAnswerArr[0].choices[3]}`);
+    
+
     /*  
     Questions:        0    1    2    3    4    5    6    7    8    9
     Answers:        ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];   */
-
-    var questionI = 0; // INDEX FOR QUESTIONS + ANSWERS
     $(".choiceBtns button").on("click", function (e) {
         var userChoice = e.target.innerText.toString().toLowerCase();
 
         if (questionI < QUIZ_QUESTION_AMOUNT) {
 
-            if (userChoice === answersLtrs[questionI]) {
+            if (userChoice === jQueryAnswerArr[questionI].answer) {
+                console.log(`GOT IT ${questionI}`);
                 userScore = userScore + 10;
-                console.log("Question Index: " + questionI + " - Question: " + questionI);
-                console.log("Correct Answer: " + answersLtrs[questionI]);
-                console.log(" User's Choice: " + userChoice);
-                console.log("UserScore: " + userScore);
                 questionI++;
                 $(".score").text(userScore);
                 $(".questionCounter").text(questionI + 1);
-                $(".questionText").text(questionsArr[questionI]);
-                $(".questionChoices").text(answerArr[questionI]);
+                $(".questionText").text(jQueryAnswerArr[questionI].question);
+                $(".a").text(`A.  ${jQueryAnswerArr[questionI].choices[0]}`);
+                $(".b").text(`B.  ${jQueryAnswerArr[questionI].choices[1]}`);
+                $(".c").text(`C.  ${jQueryAnswerArr[questionI].choices[2]}`);
+                $(".d").text(`D.  ${jQueryAnswerArr[questionI].choices[3]}`);
 
-            } else if (userChoice != answersLtrs[questionI]) {
-                console.log("Question Index: " + questionI + " - Question: " + questionI);
-                console.log("Wrong Answer: " + answersLtrs[questionI]);
-                console.log(" User's Choice: " + userChoice);
-                console.log("UserScore: " + userScore);
+            } else if (userChoice != jQueryAnswerArr[questionI].answer) {
+                console.log(`NOPE ${questionI}`);
                 questionI++;
                 $(".score").text(userScore);
                 $(".questionCounter").text(questionI + 1);
-                $(".questionText").text(questionsArr[questionI]);
-                $(".questionChoices").text(answerArr[questionI]);
+                $(".questionText").text(jQueryAnswerArr[questionI].question);
+                $(".a").text(`A.  ${jQueryAnswerArr[questionI].choices[0]}`);
+                $(".b").text(`B.  ${jQueryAnswerArr[questionI].choices[1]}`);
+                $(".c").text(`C.  ${jQueryAnswerArr[questionI].choices[2]}`);
+                $(".d").text(`D.  ${jQueryAnswerArr[questionI].choices[3]}`);
 
-            } if (questionI === QUIZ_QUESTION_AMOUNT) {
+            } if (questionI === QUIZ_QUESTION_AMOUNT - 1) {
+                console.log(`DONE ${questionI}`);
                 clearInterval(setIntTimer);
                 gameOver();
             }
         }
     })
 }
-
 var userIntials = ""; // USER'S INTIALS
 
 /* GAME OVER SCREEN */
 function gameOver() {
-    clearInterval(setIntTimer);
+    /* clearInterval(setIntTimer); */
     $(".scoreDisplay").show();
     $(".questionText").hide();
     $(".questionChoices").hide();
+    $(".a").hide();
+    $(".b").hide();
+    $(".c").hide();
+    $(".d").hide();
     $(".scoreTimerCard ").show();
     $(".mainQuestionText").text("GAME OVER!");
     $(".userScoreLogBox").show();
     $(".mainQuestionText span").text("");
 
-    /* CREATING AUDIO ELEMENTS. (Thanks Captain Planet!) */
+    /* CREATING END GAME AUDIO ELEMENTS. (Thanks Captain Planet! x 2) */
     var badAudioEle = document.createElement("audio");
     badAudioEle.setAttribute("src", "Assets/audio/badScore.mp3");
     var mehAudioEle = document.createElement("audio");
@@ -163,11 +221,11 @@ function gameOver() {
             location.assign("scores.html");
             console.log("Logging: " + userInit);
         }
-            localStorage.setItem("uInitials", userInit);
-            localStorage.setItem("uScores", userScore);
+        localStorage.setItem("uInitials", userInit); // STORES USER'S INTIALS TO LS
+        localStorage.setItem("uScores", userScore); // STORES USER'S SCORE TO LS
     })
 
-    /* END SCORE MESSAGE */
+    /* END SCORE MESSAGE + GOODIES */
     if (userScore < 0 || userScore === 0) {
         badAudioEle.play();
         $(".scoreMsg").text("Humm.. not good.. not good at all.. You need to work on your jQuery skills!");

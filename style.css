@@ -29,14 +29,14 @@ p {
 }
 
 .bgIntro {
-    margin-top: 50px;
+    margin-top: 20px;
     background: #F03232;
     background: -moz-linear-gradient(top, #F03232 0%, #E83030 58%, #D92D2D 100%);
     background: -webkit-linear-gradient(top, #F03232 0%, #E83030 58%, #D92D2D 100%);
     background: linear-gradient(to bottom, #F03232 0%, #E83030 58%, #D92D2D 100%);
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 43px 48px rgba(0, 0, 0, 0.08);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 43px 48px rgba(0, 0, 0, 0.08);
-    border: rgb(156, 9, 9) 3px solid;
+    border: rgb(156, 9, 9) 3px ridge;
     border-radius: 76px;
 }
 
@@ -55,7 +55,7 @@ p {
 }
 
 .bgQuiz {
-    margin-top: 25px;
+    margin-top: 20px;
     background: #F03232;
     background: -moz-linear-gradient(top, #F03232 0%, #E83030 58%, #D92D2D 100%);
     background: -webkit-linear-gradient(top, #F03232 0%, #E83030 58%, #D92D2D 100%);
@@ -65,11 +65,36 @@ p {
     border: rgb(156, 9, 9) 3px solid;
     border-radius: 76px;
 }
-
-.mainQuestionText {
+.timerCard{
+    font-size: 14px;
+}
+.timerM{font-size: 14px;}
+.timerS{ font-size: 14px;}
+.scoreFont{
+    font-size: 14px;
+}
+.countDownTimer{
+    color:white;
     font-size: 45px;
+    padding: 125px;
+}
+
+.startBtn:hover{
+    font-size: 24px;
+    padding: 14px;
+} 
+.scoresBtn:hover{
+    font-size: 24px;
+    padding: 14px;
+}
+.instructionsBtn:hover{
+    font-size: 24px;
+    padding: 14px;
+}
+.mainQuestionText {
+    font-size: 26px;
     /*   text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F; */
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .indexCard {
@@ -79,8 +104,8 @@ p {
     background: linear-gradient(to right, #F0F0F0 0%, #E0E0E0 50%, #E0E0E0 100%);
     -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
     box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
-    margin: 20px;
-    padding: 50px;
+    margin: 8px;
+    padding: 15px;
     border: solid 2px black;
     border-top-right-radius: 65px;
     border-bottom-left-radius: 65px;
@@ -88,10 +113,10 @@ p {
 
 #scoreImg {
     display: none;
-    width: 105px !important;
+    width: 80px !important;
     height: auto;
-    margin-top: 25px;
-    margin-bottom: 45px;
+    margin-top: 12px;
+    margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -99,7 +124,7 @@ p {
 
 .choiceBtns {
     margin-bottom: 30px;
-    margin-top: -10px;
+    /* margin-top: -10px; */
 }
 
 .choiceBtns button {
@@ -110,30 +135,43 @@ p {
     background-color: rgba(77, 77, 77, 0.246);
     border-radius: 25px;
     padding: 20px;
-    font-size: 22px;
+    font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.questionChoices {
-    font-size: 18px;
+.questionChoices, .a, .b,.c,.d {
+    font-size: 16px; 
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+/* 
+.indexCard .questionChoices div:hover {
+    background-color:rgba(133, 133, 133, 0.561);
+    cursor: pointer;
+} */
 
 .scoreTimerCard p {
     margin: 80px;
 }
 
 .homeBtn {
-    margin-top: -25px;
+
+    margin-top: -2px;
 }
 
 .scoreDisplay {
     display: none;
-    font-size: 35px;
+    font-size: 28px;
 }
 
 .scoreMsg {
     font-style: italic;
+    font-size: 16px;
+    background-color:rgba(128, 128, 128, 0.267);
+    padding: 5px;
+    margin-top: -20px;
+    margin-left: 55px;
+    margin-right: 55px;
+    border-radius: 15px;
 }
 
 .userScoreLogBox {
@@ -143,6 +181,24 @@ p {
 .errorText {
     color: grey;
 }
+
+.a:hover {
+    background-color: rgba(128, 128, 128, 0.466); 
+    cursor: help;
+}
+.b:hover {
+    background-color: rgba(128, 128, 128, 0.466); 
+    cursor: help;
+}
+.c:hover {
+    background-color: rgba(128, 128, 128, 0.466); 
+    cursor: help;
+}
+.d:hover {
+    background-color: rgba(128, 128, 128, 0.466); 
+    cursor: help;
+}
+
 
 .userScoreLogBox button {
     margin: 15px;
@@ -165,6 +221,10 @@ p {
     .greatThinker {
         width: 355px;
         height: auto;
+    }
+    .scoreMsg{
+        margin-left: 25px;
+        margin-right: 25px;
     }
 
     .scoreTimerCard{

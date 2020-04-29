@@ -17,22 +17,28 @@
 
     <!-- QUIZ CONTAINER -->
     <div class="container text-center bgQuiz"> <br>
+        
         <h4 class="text-center text-white mainQuestionText"> Question <span class="questionCounter"> 1 </span></h4>
-        <div class="scoreTimerCard mt-2">
-            <p class="text-white d-inline ">Score: <span class="score">0</span></p>
-            <p class="text-white d-inline timerCard ">Timer: <span class="timerM">05 </span> : <span
+        <div class="scoreTimerCard"> <!-- SCORE + TIER -->
+            <p class="text-white d-inline scoreFont ">Score: <span class="score">0</span></p>
+            <p class="text-white d-inline timerCard ">Timer: <span class="timerM">02 </span> : <span
                     class="timerS ">00</span> </p>
         </div>
-        <!-- END CONTAINER -->
         <div class="indexCard">
             <p class="questionText"></p>
+            <!-- SCORE DISPLAY -->
             <p class="scoreDisplay">
                 YOU FINISHED! WHEW! Hopefully you did well! <br>
                 Here is your score : <span class="finalScore"></span><br>
                 <img src="Assets/imgs/thumbsDown.png"  alt="scoreImg" id="scoreImg">
                 <p class="scoreMsg"></p>
             </p>
-            <p class="questionChoices"></p>
+            <p class="questionChoices">
+                <div class="a"></div> <br>
+                <div class="b"></div> <br>
+                <div class="c"></div> <br>
+                <div class="d"></div> <br>
+            </p>
         
               <!-- USER INTIALS CONTAINER HIDE/SHOW -->
             <div  class="userScoreLogBox">
@@ -53,7 +59,7 @@
         </div> 
 
         <!-- QUIT BUTTON -->
-        <button class="btn btn-lg bg-primary mb-3 pt-3 text-white homeBtn"> <a href="index.html" class="text-white"> QUIT!
+        <button class="btn btn-lg bg-primary mb-2 text-white homeBtn"> <a href="index.html" class="text-white"> QUIT!
             </a></button>
     </div>
     
