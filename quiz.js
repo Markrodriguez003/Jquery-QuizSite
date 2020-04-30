@@ -145,7 +145,6 @@ function gameStart() {
 
 
     $(".choiceBtns button").on("click", function (e) {
-        /* choiceBtn.play(); */
         var userChoice = e.target.innerText.toString().toLowerCase();
         if (questionI < 10) {
             console.log(`INSIDE MAIN IF:::::: index:  ${questionI}`)
@@ -220,8 +219,6 @@ function gameOver() {
     mehAudioEle.setAttribute("src", "Assets/audio/mehScore.mp3")
     var goodAudioEle = document.createElement("audio");
     goodAudioEle.setAttribute("src", "Assets/audio/correctScore.mp3")
-    /* var choiceBtn = document.createElement("audio");
-    choiceBtn.setAttribute("src", "Assets/audio/button.mp3") */
 
     /* SELECTING INTIAL'S BTN  */
     var userInitBtn = $("#userInitialsBtn");
