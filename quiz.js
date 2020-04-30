@@ -1,6 +1,6 @@
 /* ARRAY OF QUESTIONS */ /* CHANGE TO OBJ - {"QUESTION", "CHOICES","ANSWER" } */
 
-var jQueryAnswerArr = [
+var jQueryArr = [
     {
         question: "Which of the choices below is used as the jQuery shorthand selector?",
         choices: ["!{\" \"}", "@{\" \"}", " ^[\" \"]", "$(\" \")"],
@@ -119,68 +119,86 @@ function timerStart() {
 
 /* $(".questionChoices").text(answerArr[0]);  */
 
-gameStart();  //STARTS GAME
+//STARTS GAME
 
 /*  USER SCORE */
 var userScore = 0; // USER SCORE
 var setIntTimer; // TIMER SETINTERVAL VAR
-const QUIZ_QUESTION_AMOUNT = 10; // # OF QUESTIONS
-
+/* const QUIZ_QUESTION_AMOUNT = 10; */ // # OF QUESTIONS
+gameStart();
 /* GAME START FUNCTION */
 function gameStart() {
-
     var questionI = 0; // INDEX FOR QUESTIONS + ANSWERS /* THIS CAN BE FURTHER SIMPLIFIED WITH OBJ ^ */
-    setIntTimer = setInterval(timerStart, 1000); // timerStart() doesn't work.
-    $(".questionText").text(jQueryAnswerArr[questionI].question);
-    $(".a").text(`A.  ${jQueryAnswerArr[0].choices[0]}`);
-    $(".b").text(`B.  ${jQueryAnswerArr[0].choices[1]}`);
-    $(".c").text(`C.  ${jQueryAnswerArr[0].choices[2]}`);
-    $(".d").text(`D.  ${jQueryAnswerArr[0].choices[3]}`);
-    
-
+    setIntTimer = setInterval(timerStart, 100000); // timerStart() doesn't work.
     /*  
     Questions:        0    1    2    3    4    5    6    7    8    9
-    Answers:        ["d", "d", "b", "a", "c", "a", "b", "d", "a", "c"];   */
+    Answers:        ["d", "d", "c", "a", "b", b", "c", "d", "a", "c"];   */
+
+    console.log("=============");
+    console.log(`MAIN "FUNCTION" LOADER  - Index : ${questionI}`);
+    $(".questionCounter").text(questionI + 1);
+    $(".questionText").text(jQueryArr[questionI].question);
+    $(".a").text(`A.  ${jQueryArr[questionI].choices[0]}`);
+    $(".b").text(`B.  ${jQueryArr[questionI].choices[1]}`);
+    $(".c").text(`C.  ${jQueryArr[questionI].choices[2]}`);
+    $(".d").text(`D.  ${jQueryArr[questionI].choices[3]}`);
+
+
     $(".choiceBtns button").on("click", function (e) {
         var userChoice = e.target.innerText.toString().toLowerCase();
-
-        if (questionI < QUIZ_QUESTION_AMOUNT) {
-
-            if (userChoice === jQueryAnswerArr[questionI].answer) {
-                console.log(`GOT IT ${questionI}`);
+        if (questionI < 10) {
+            console.log(`INSIDE MAIN IF:::::: index:  ${questionI}`)
+            if (userChoice === jQueryArr[questionI].answer) {
+                console.log("=============");
+                console.log(`RIGHT. We are on index : ${questionI}`);
+                console.log(`User's Choice: ${userChoice}, right answer ${jQueryArr[questionI].answer}`)
                 userScore = userScore + 10;
-                questionI++;
                 $(".score").text(userScore);
-                $(".questionCounter").text(questionI + 1);
-                $(".questionText").text(jQueryAnswerArr[questionI].question);
-                $(".a").text(`A.  ${jQueryAnswerArr[questionI].choices[0]}`);
-                $(".b").text(`B.  ${jQueryAnswerArr[questionI].choices[1]}`);
-                $(".c").text(`C.  ${jQueryAnswerArr[questionI].choices[2]}`);
-                $(".d").text(`D.  ${jQueryAnswerArr[questionI].choices[3]}`);
-
-            } else if (userChoice != jQueryAnswerArr[questionI].answer) {
-                console.log(`NOPE ${questionI}`);
-                questionI++;
+                if (questionI === 9) {
+                    console.log("======WORK AROUND=====");
+                    clearInterval(setIntTimer);
+                    gameOver();
+                }
+                else {
+                    questionI = questionI + 1;
+                    $(".questionCounter").text(questionI + 1);
+                    $(".questionText").text(jQueryArr[questionI].question);
+                    $(".a").text(`A.  ${jQueryArr[questionI].choices[0]}`);
+                    $(".b").text(`B.  ${jQueryArr[questionI].choices[1]}`);
+                    $(".c").text(`C.  ${jQueryArr[questionI].choices[2]}`);
+                    $(".d").text(`D.  ${jQueryArr[questionI].choices[3]}`);
+                    console.log(`We are adding 1 so index is : ${questionI}`);
+                }
+            } else if (userChoice != jQueryArr[questionI].answer) {
+                console.log("=============");
+                console.log(`NOPE. We are on index : ${questionI}`);
+                console.log(`User's Choice: ${userChoice}, right answer ${jQueryArr[questionI].answer}`)
                 $(".score").text(userScore);
-                $(".questionCounter").text(questionI + 1);
-                $(".questionText").text(jQueryAnswerArr[questionI].question);
-                $(".a").text(`A.  ${jQueryAnswerArr[questionI].choices[0]}`);
-                $(".b").text(`B.  ${jQueryAnswerArr[questionI].choices[1]}`);
-                $(".c").text(`C.  ${jQueryAnswerArr[questionI].choices[2]}`);
-                $(".d").text(`D.  ${jQueryAnswerArr[questionI].choices[3]}`);
+                if (questionI === 9) {
+                    console.log("======WORK AROUND=====");
+                    clearInterval(setIntTimer);
+                    gameOver();
+                } else {
+                    questionI = questionI + 1;
+                    $(".questionCounter").text(questionI + 1);
+                    $(".questionText").text(jQueryArr[questionI].question);
+                    $(".a").text(`A.  ${jQueryArr[questionI].choices[0]}`);
+                    $(".b").text(`B.  ${jQueryArr[questionI].choices[1]}`);
+                    $(".c").text(`C.  ${jQueryArr[questionI].choices[2]}`);
+                    $(".d").text(`D.  ${jQueryArr[questionI].choices[3]}`);
 
-            } if (questionI === QUIZ_QUESTION_AMOUNT - 1) {
-                console.log(`DONE ${questionI}`);
-                clearInterval(setIntTimer);
-                gameOver();
+                    console.log(`We are adding 1 so index is : ${questionI}`);
+                }
             }
         }
-    })
+    }) //click
 }
 var userIntials = ""; // USER'S INTIALS
 
 /* GAME OVER SCREEN */
 function gameOver() {
+    console.log(`RIGHT. We are IN GAME OVER()`);
+
     /* clearInterval(setIntTimer); */
     $(".scoreDisplay").show();
     $(".questionText").hide();

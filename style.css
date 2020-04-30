@@ -215,11 +215,11 @@ p {
 
 @media (max-width: 1180px) {
     .mainText {
-        font-size: 45px;
+        font-size: 35px;
         text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F;
     }
     .greatThinker {
-        width: 355px;
+        width: 255px;
         height: auto;
     }
     .scoreMsg{
@@ -232,6 +232,30 @@ p {
         margin: 40px;
         
 
+    }
+
+    .scoreFont{
+        font-size: 12px;
+        display:inline;
+    }
+    .scoreFont .score{
+        font-size: 12px;
+        display:inline;
+    } 
+    
+    .timeCard {
+        font-size: 12px;
+        display:inline;
+    }
+    
+    .timeCard .timerM{
+        font-size: 12px;
+        display:inline;
+    }
+    
+    .timeCard .timerS{
+        font-size: 12px;
+        display:inline;
     }
     
 }

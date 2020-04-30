@@ -1,9 +1,10 @@
 $(document).ready(function () {
 
+    /* CREATING POP AUDIO ELEMENT */
     var popS = document.createElement("audio");
     popS.setAttribute("src", "Assets/audio/pop.mp3");
 
-    $("#pop").click(function(){
+    $("#pop").click(function(){ // POP
         popS.play();
     })
 
