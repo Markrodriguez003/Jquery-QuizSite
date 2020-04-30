@@ -129,7 +129,7 @@ gameStart();
 /* GAME START FUNCTION */
 function gameStart() {
     var questionI = 0; // INDEX FOR QUESTIONS + ANSWERS /* THIS CAN BE FURTHER SIMPLIFIED WITH OBJ ^ */
-    setIntTimer = setInterval(timerStart, 100000); // timerStart() doesn't work.
+    setIntTimer = setInterval(timerStart, 1000); // timerStart() doesn't work.
     /*  
     Questions:        0    1    2    3    4    5    6    7    8    9
     Answers:        ["d", "d", "c", "a", "b", b", "c", "d", "a", "c"];   */
@@ -145,6 +145,7 @@ function gameStart() {
 
 
     $(".choiceBtns button").on("click", function (e) {
+        /* choiceBtn.play(); */
         var userChoice = e.target.innerText.toString().toLowerCase();
         if (questionI < 10) {
             console.log(`INSIDE MAIN IF:::::: index:  ${questionI}`)
@@ -219,6 +220,8 @@ function gameOver() {
     mehAudioEle.setAttribute("src", "Assets/audio/mehScore.mp3")
     var goodAudioEle = document.createElement("audio");
     goodAudioEle.setAttribute("src", "Assets/audio/correctScore.mp3")
+    /* var choiceBtn = document.createElement("audio");
+    choiceBtn.setAttribute("src", "Assets/audio/button.mp3") */
 
     /* SELECTING INTIAL'S BTN  */
     var userInitBtn = $("#userInitialsBtn");

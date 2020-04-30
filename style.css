@@ -25,7 +25,7 @@ p {
 
 .mainText {
     font-size: 65px;
-    text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F;
+    text-shadow: 2px 2px 0px rgba(41, 41, 41, 0.66), 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F;
 }
 
 .bgIntro {
@@ -65,32 +65,44 @@ p {
     border: rgb(156, 9, 9) 3px solid;
     border-radius: 76px;
 }
-.timerCard{
+
+.timerCard {
     font-size: 14px;
-}
-.timerM{font-size: 14px;}
-.timerS{ font-size: 14px;}
-.scoreFont{
-    font-size: 14px;
-}
-.countDownTimer{
-    color:white;
-    font-size: 45px;
-    padding: 125px;
 }
 
-.startBtn:hover{
-    font-size: 24px;
-    padding: 14px;
-} 
-.scoresBtn:hover{
+.timerM {
+    font-size: 14px;
+}
+
+.timerS {
+    font-size: 14px;
+}
+
+.scoreFont {
+    font-size: 14px;
+}
+
+.countDownTimer {
+    color: white;
+    font-size: 45px;
+    padding: 45px;
+}
+
+.startBtn:hover {
     font-size: 24px;
     padding: 14px;
 }
-.instructionsBtn:hover{
+
+.scoresBtn:hover {
     font-size: 24px;
     padding: 14px;
 }
+
+.instructionsBtn:hover {
+    font-size: 24px;
+    padding: 14px;
+}
+
 .mainQuestionText {
     font-size: 26px;
     /*   text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F; */
@@ -139,10 +151,11 @@ p {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.questionChoices, .a, .b,.c,.d {
-    font-size: 16px; 
+.questionChoices, .a, .b, .c, .d {
+    font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 /* 
 .indexCard .questionChoices div:hover {
     background-color:rgba(133, 133, 133, 0.561);
@@ -150,11 +163,10 @@ p {
 } */
 
 .scoreTimerCard p {
-    margin: 80px;
+    /* margin: 80px; */
 }
 
 .homeBtn {
-
     margin-top: -2px;
 }
 
@@ -164,14 +176,16 @@ p {
 }
 
 .scoreMsg {
+    
     font-style: italic;
     font-size: 16px;
-    background-color:rgba(128, 128, 128, 0.267);
-    padding: 5px;
+    background-color: rgba(128, 128, 128, 0.267);
+    padding: 2px 14px 4px 14px;
     margin-top: -20px;
     margin-left: 55px;
     margin-right: 55px;
     border-radius: 15px;
+    overflow: scroll;
 }
 
 .userScoreLogBox {
@@ -183,79 +197,78 @@ p {
 }
 
 .a:hover {
-    background-color: rgba(128, 128, 128, 0.466); 
-    cursor: help;
-}
-.b:hover {
-    background-color: rgba(128, 128, 128, 0.466); 
-    cursor: help;
-}
-.c:hover {
-    background-color: rgba(128, 128, 128, 0.466); 
-    cursor: help;
-}
-.d:hover {
-    background-color: rgba(128, 128, 128, 0.466); 
+    background-color: rgba(128, 128, 128, 0.466);
     cursor: help;
 }
 
+.b:hover {
+    background-color: rgba(128, 128, 128, 0.466);
+    cursor: help;
+}
+
+.c:hover {
+    background-color: rgba(128, 128, 128, 0.466);
+    cursor: help;
+}
+
+.d:hover {
+    background-color: rgba(128, 128, 128, 0.466);
+    cursor: help;
+}
 
 .userScoreLogBox button {
     margin: 15px;
 }
 
-.scoreTable{
-}
+.scoreTable {}
 
-.medals{
+.medals {
     width: 18px;
     height: auto;
-
 }
 
 @media (max-width: 1180px) {
     .mainText {
         font-size: 35px;
-        text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0, 0, 0, 0.15), -1px 6px 8px #0F0F0F;
+    }
+
+    .mainQuestionText {
+        font-size: 34px;
+        margin-bottom: -25px;
     }
     .greatThinker {
         width: 255px;
         height: auto;
     }
-    .scoreMsg{
+    .scoreMsg {
+        font-size:12.5px ;
         margin-left: 25px;
         margin-right: 25px;
     }
-
-    .scoreTimerCard{
+    .scoreTimerCard {
         font-size: 12px;
-        margin: 40px;
-        
-
+        margin-top: 40px;
     }
 
-    .scoreFont{
-        font-size: 12px;
-        display:inline;
+    .scoreDisplay {
+        font-size: 18px;
+        padding: 4px;
     }
-    .scoreFont .score{
-        font-size: 12px;
-        display:inline;
-    } 
-    
-    .timeCard {
-        font-size: 12px;
-        display:inline;
+/*     .timerCard {
+        font-size: 9.5px !important;
     }
-    
-    .timeCard .timerM{
-        font-size: 12px;
-        display:inline;
+    .timerM {
+        font-size: 9.5px !important;
     }
-    
-    .timeCard .timerS{
-        font-size: 12px;
-        display:inline;
+    .timerS {
+        font-size: 9.5px !important;
     }
-    
+ 
+    .scoreFont {
+        font-size: 9.5px !important;
+    }
+    .scoreFont .score {
+        font-size: 9.5px !important;
+    } */
+  
 }
